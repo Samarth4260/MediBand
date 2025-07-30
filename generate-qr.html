@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate QR Codes</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f4ff;
+      padding: 20px;
+    }
+    .qr-box {
+      background: white;
+      padding: 10px;
+      margin: 20px;
+      box-shadow: 2px 2px 8px #ccc;
+      display: inline-block;
+      text-align: center;
+    }
+    canvas {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>QR Codes for Person Users</h2>
+  <div id="qrContainer"></div>
+
+  <script>
+    const users = [
+      {
+        username: "john",
+        name: "John Doe",
+        role: "person"
+      },
+      {
+        username: "nina",
+        name: "Nina Patel",
+        role: "person"
+      },
+      {
+        username: "arjun",
+        name: "Arjun Sharma",
+        role: "person"
+      },
+      {
+        username: "lisa",
+        name: "Lisa Wong",
+        role: "person"
+      }
+    ];
+
+    users.forEach(user => {
+      if (user.role === 'person') {
+        const div = document.createElement('div');
+        div.className = 'qr-box';
+        div.innerHTML = `
+          <strong>${user.name}</strong><br>
+          <canvas id="qr-${user.username}"></canvas><br>
+          <code>index.html?user=${user.username}</code>
+        `;
+        document.getElementById('qrContainer').appendChild(div);
+
+        new QRious({
+          element: document.getElementById(`qr-${user.username}`),
+          value: \`index.html?user=${user.username}\`,
+          size: 200
+        });
+      }
+    });
+  </script>
+</body>
+</html>
