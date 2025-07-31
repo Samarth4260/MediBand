@@ -15,16 +15,19 @@ body {
   min-height: 100vh;
 }
 
+/* ✅ Main container - 6cm width for phone compatibility */
 .container {
   background: #ecf0f3;
   width: 90vw;
-  max-width: 360px; /* ✅ Important: for mobile fit */
+  max-width: 6cm; /* ✅ Will not exceed 6 cm */
   padding: 25px;
   border-radius: 20px;
   box-shadow: 9px 9px 16px #d1d9e6, -9px -9px 16px #ffffff;
   text-align: center;
+  margin: auto;
 }
 
+/* Card where data is shown */
 .card {
   margin-top: 20px;
   padding: 20px;
@@ -36,6 +39,8 @@ body {
 
 h2 {
   margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #333;
 }
 
 input, button {
@@ -78,5 +83,4 @@ p {
   margin: 10px 0;
   font-size: 0.95rem;
   color: #333;
-}
 }
